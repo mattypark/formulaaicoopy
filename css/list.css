@@ -194,24 +194,27 @@
   justify-content: center;
 }
 
+/* All four artwork slots share one cap so no slide's panel reads noticeably
+   larger than its neighbours. Sized off the viewport so it stays proportional
+   on wide screens instead of ballooning. */
+.list__main__img-01,
+.list__main__img-02,
+.list__main__img-03,
+.list__main__img-04 {
+  width: 62rem;
+  max-width: min(880px, 58vw);
+  height: auto;
+}
+
 .list__main__img-01,
 .list__main__img-03 {
   position: absolute;
   top: 3rem;
-  width: 80rem;
-  max-width: 1080px;
-}
-
-.list__main__img-02 {
-  width: 100rem;
-  max-width: none;
 }
 
 .list__main__img-04 {
   position: absolute;
   top: 6rem;
-  width: 96rem;
-  max-width: 1240px;
 }
 
 .list__main__bottom-gradient {
@@ -257,16 +260,16 @@
     flex: 0 auto;
   }
 
+  /* Width comes from the shared cap above — only positioning changes here,
+     otherwise tablet would render the artwork larger than desktop. */
   .list__main__img-01,
   .list__main__img-03,
   .list__main__img-04 {
-    width: 72rem;
     left: 3rem;
   }
 
   .list__main__img-02 {
     top: 3rem;
-    left: 3rem;
   }
 
   .btn-primary-stb {
