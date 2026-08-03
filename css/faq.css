@@ -1,0 +1,139 @@
+/* ==========================================================================
+   FAQ — label left, single-open accordion right
+   ========================================================================== */
+
+.faq {
+  display: flex;
+  margin-top: 10rem;
+  border-top: 1px solid var(--lines);
+  border-bottom: 1px solid var(--lines);
+}
+
+.faq__left {
+  flex: none;
+  width: 28.5rem;
+  padding: 2rem;
+  border-right: 1px solid var(--lines);
+}
+
+.faq__right {
+  flex: 1;
+}
+
+.faq__title {
+  padding: 2rem;
+}
+
+.faq__wrap {
+  margin-bottom: -1px;
+}
+
+.faq__list {
+  display: flex;
+  flex-flow: column;
+}
+
+.faq__item {
+  display: flex;
+  flex-flow: column;
+  padding: 2rem;
+  border-bottom: 1px solid var(--lines);
+}
+
+.faq__item-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2rem;
+  width: 100%;
+  text-align: left;
+  transition: opacity var(--duration-fast) ease;
+}
+
+.faq__item-title:hover {
+  opacity: 0.64;
+}
+
+.faq__label {
+  color: var(--fonts-100);
+  text-wrap: balance;
+}
+
+.faq__icon {
+  flex: none;
+  font-size: 2rem;
+  line-height: 1.25rem;
+  font-weight: var(--regular);
+  color: var(--fonts-100);
+}
+
+/* height/opacity are driven inline by js/faq.js */
+.faq__content {
+  overflow: hidden;
+  transition: height 0.35s var(--ease-out), opacity 0.35s ease;
+}
+
+.faq__content-txt {
+  padding-top: 1.25rem;
+  max-width: 52ch;
+}
+
+@media (max-width: 991px) {
+  .faq {
+    flex-flow: column;
+    margin-top: 5rem;
+    border-top-width: 0;
+    border-bottom-width: 0;
+  }
+
+  .faq__left {
+    width: 100%;
+    height: auto;
+    padding-top: 0;
+    padding-bottom: 1rem;
+    border-right-width: 0;
+  }
+
+  .faq__title {
+    padding-top: 0;
+    padding-bottom: 3rem;
+  }
+
+  .faq__list {
+    padding-inline: 2rem;
+  }
+
+  .faq__item {
+    margin-top: -1px;
+    padding-inline: 0;
+    border-top: 1px solid var(--lines);
+  }
+}
+
+@media (max-width: 767px) {
+  .faq__left {
+    padding-bottom: 0.75rem;
+    padding-inline: 1rem;
+  }
+
+  .faq__title {
+    padding-bottom: 3rem;
+    padding-inline: 1rem;
+  }
+
+  .faq__list {
+    padding-inline: 1rem;
+  }
+
+  .faq__item {
+    padding-top: 1.25rem;
+  }
+
+  .faq__item-title {
+    gap: 1rem;
+  }
+
+  .faq__icon {
+    font-size: 1.25rem;
+  }
+}

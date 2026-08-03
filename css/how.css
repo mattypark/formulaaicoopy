@@ -1,0 +1,244 @@
+/* ==========================================================================
+   How it works — sticky left title, endlessly scrolling right column,
+   logo marquee underneath
+   ========================================================================== */
+
+.how {
+  position: relative;
+  display: flex;
+  flex-flow: column;
+  padding-top: 10rem;
+  padding-bottom: 10rem;
+}
+
+.how__title {
+  padding-bottom: 2rem;
+  padding-left: 30.5rem;
+}
+
+.how__main {
+  display: flex;
+  border-top: 1px solid var(--lines);
+  border-bottom: 1px solid var(--lines);
+}
+
+.how__left {
+  position: relative;
+  flex: none;
+  display: flex;
+  flex-flow: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  width: 28.5rem;
+  padding: 2rem 2rem 4rem;
+  border-right: 1px solid var(--lines);
+}
+
+/* Sits under the headline rather than in flow, so the headline keeps the
+   column's full height to itself. */
+.btn-primary.is-how {
+  position: absolute;
+  left: 2rem;
+  bottom: 4rem;
+  cursor: pointer;
+}
+
+.how__right {
+  flex: 1;
+  display: flex;
+  flex-flow: column;
+  height: 38rem;
+  overflow: hidden;
+}
+
+.how__column {
+  animation: columnanima 24s linear infinite;
+  flex: none;
+}
+
+.how__item {
+  padding: 2rem 2rem 2.5rem;
+  border-bottom: 1px solid var(--lines);
+}
+
+.how__right-title {
+  opacity: 0.2;
+  will-change: opacity;
+}
+
+/* --- Trusted-by marquee -------------------------------------------------- */
+
+.how__bottom {
+  display: flex;
+}
+
+.how__bottom-left {
+  flex: none;
+  width: 28.5rem;
+  padding: 2rem;
+}
+
+.how__bottom-right {
+  position: relative;
+  flex: none;
+  width: calc(100% - 28.5rem);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 2rem;
+  overflow: hidden;
+}
+
+.how__bottom-row {
+  display: flex;
+  flex-flow: row;
+  gap: 1.5rem;
+  padding-right: 1.5rem;
+  animation: marquee 24s linear infinite;
+}
+
+.how__bottom-item {
+  flex: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 16rem;
+  height: 12.5rem;
+  background-color: var(--secondbg);
+  border-radius: var(--radius-sm);
+}
+
+.how__bottom-logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 6.5rem;
+  height: 1.5rem;
+  color: var(--fonts-64);
+}
+
+.how__bottom-logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.how__bottom-gr-left,
+.how__bottom-gr-right {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 6.5rem;
+  pointer-events: none;
+}
+
+.how__bottom-gr-left {
+  left: 0;
+  background-image: linear-gradient(90deg, var(--mainbg), var(--mainbg-gradient));
+}
+
+.how__bottom-gr-right {
+  right: 0;
+  background-image: linear-gradient(-90deg, var(--mainbg), var(--mainbg-gradient));
+}
+
+/* --- Tablet -------------------------------------------------------------- */
+
+@media (max-width: 991px) {
+  .how__title {
+    padding-bottom: 1rem;
+    padding-left: 2rem;
+  }
+
+  .how__main {
+    flex-flow: column;
+    border-top-width: 0;
+    border-bottom-width: 0;
+  }
+
+  .how__left {
+    width: 100%;
+    height: auto;
+    padding-top: 0;
+    padding-bottom: 3rem;
+    border-right-width: 0;
+  }
+
+  .how__right {
+    flex: none;
+    height: 32rem;
+    border-top: 1px solid var(--lines);
+    border-bottom: 1px solid var(--lines);
+  }
+
+  .btn-primary.is-how {
+    left: 1rem;
+    bottom: 1rem;
+  }
+
+  .how__bottom {
+    flex-flow: column;
+  }
+
+  .how__bottom-left {
+    width: 100%;
+    padding-top: 10rem;
+    padding-bottom: 1rem;
+  }
+
+  .how__bottom-right {
+    width: 100%;
+    padding-top: 1rem;
+  }
+}
+
+/* --- Mobile -------------------------------------------------------------- */
+
+@media (max-width: 767px) {
+  .how {
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+  }
+
+  .how__title {
+    padding-bottom: 0.75rem;
+    padding-left: 1rem;
+  }
+
+  .how__left {
+    padding-bottom: 3rem;
+    padding-inline: 1rem;
+  }
+
+  .how__right {
+    height: 17.5rem;
+  }
+
+  .how__item {
+    padding: 1.5rem 1rem 2rem;
+  }
+
+  .how__bottom-left {
+    padding-bottom: 0.75rem;
+    padding-inline: 1rem;
+  }
+
+  .how__bottom-right {
+    padding-top: 0.75rem;
+  }
+
+  .how__bottom-item {
+    width: 10rem;
+    height: 7.5rem;
+  }
+
+  .how__bottom-logo {
+    width: 6rem;
+    height: 1.2rem;
+  }
+
+  .how__bottom-row {
+    gap: 1rem;
+    padding-right: 1rem;
+  }
+}

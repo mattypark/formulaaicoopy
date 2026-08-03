@@ -1,0 +1,190 @@
+/* ==========================================================================
+   Preloader + cookie modal
+   ========================================================================== */
+
+.preloader {
+  z-index: 9999;
+  position: fixed;
+  inset: 0;
+  background-color: var(--mainbg);
+  pointer-events: none;
+  display: flex;
+  flex-flow: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 2rem;
+}
+
+/* GSAP reveals these one by one; keep them out of the first paint. */
+.preloader > * {
+  visibility: hidden;
+}
+
+.preloader__wrap {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.preloader__logo {
+  display: block;
+  width: 3.5rem;
+  height: 3.5rem;
+  color: var(--fonts-100);
+}
+
+.preloader__logo svg {
+  width: 100%;
+  height: 100%;
+}
+
+.preloader__loader__wrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 3.5rem;
+  height: 3.5rem;
+  color: var(--fonts-100);
+  overflow: hidden;
+}
+
+.preloader__loader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 3.5rem;
+  height: 3.5rem;
+  animation: spinStep 1s steps(8) infinite;
+}
+
+.preloader__loader svg {
+  width: 100%;
+  height: 100%;
+}
+
+.preloader__images__wrap {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  pointer-events: none;
+}
+
+.preloader__images {
+  position: relative;
+  width: 16rem;
+  height: 24rem;
+}
+
+.preloader__images-in {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: var(--radius-sm);
+}
+
+.preloader__number {
+  font-variant-numeric: tabular-nums;
+}
+
+@media (max-width: 767px) {
+  .preloader {
+    padding: 1rem;
+  }
+
+  .preloader__logo,
+  .preloader__loader,
+  .preloader__loader__wrap {
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+
+  .preloader__images {
+    width: 10.5rem;
+    height: 16rem;
+  }
+}
+
+/* --- Cookie modal ------------------------------------------------------- */
+
+.cookies {
+  z-index: 900;
+  position: fixed;
+  right: 1.5rem;
+  bottom: 1.5rem;
+  max-width: 23rem;
+}
+
+.cookies.is-dismissed {
+  display: none;
+}
+
+.cookies__modal__main {
+  position: relative;
+  background-color: var(--secondbg);
+  border: 1px solid var(--lines);
+  border-radius: var(--radius-md);
+  padding: 1.5rem;
+  display: flex;
+  flex-flow: column;
+  gap: 1.25rem;
+}
+
+.cookies__modal__close {
+  position: absolute;
+  top: 1.25rem;
+  right: 1.25rem;
+  width: 2rem;
+  height: 2rem;
+  border-radius: var(--radius-pill);
+  background-color: var(--mainbg);
+  color: var(--fonts-50);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color var(--duration-fast) ease;
+}
+
+.cookies__modal__close:hover {
+  color: var(--fonts-100);
+}
+
+.cookies__modal__close-icon svg {
+  width: 0.9rem;
+  height: 0.9rem;
+}
+
+.cookies__modal__copy {
+  display: flex;
+  flex-flow: column;
+  gap: 0.6rem;
+  padding-right: 2rem;
+}
+
+.fs-cc_link {
+  color: var(--fonts-100);
+  text-decoration: underline;
+}
+
+.fs-cc_modal-buttons {
+  display: flex;
+  gap: 0.65rem;
+}
+
+.is-cookies {
+  flex: 1;
+  padding-block: 0.8rem;
+}
+
+@media (max-width: 767px) {
+  .cookies {
+    right: 1rem;
+    left: 1rem;
+    bottom: 1rem;
+    max-width: none;
+  }
+}

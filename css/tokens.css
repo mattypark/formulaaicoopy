@@ -1,0 +1,122 @@
+/* ==========================================================================
+   Design tokens
+   Colour pairs, type scale, motion constants. Everything downstream reads
+   from here — no raw hex or px in the section files.
+   ========================================================================== */
+
+:root {
+  /* --- Surfaces & ink (light is the default theme) --------------------- */
+  --mainbg: #ffffff;
+  --mainbg-gradient: #ffffff00;
+  --secondbg: #f7f7f7;
+
+  --fonts-100: #020108;
+  --fonts-64: #020108a3;
+  --fonts-50: #02010880;
+  --fonts-30: #0201084d;
+  --fonts-20: #02010833;
+
+  --lines: #d7d7d6;
+  --menu: #272727;
+  --menu-colors: #ffffff33;
+  --dots-pattern: #d9d9d9;
+
+  /* --- Accent ramp ----------------------------------------------------- */
+  --accent: #f94a00;
+  --accent-warm: #fd7b03;
+
+  /* --- Slide gradients -------------------------------------------------- */
+  --slide-01: linear-gradient(#f94a00, #fd7b03);
+  --slide-02: linear-gradient(#48a3d1, #fd7b03);
+  --slide-03: linear-gradient(#3a54ff, #7a67c5 23%, #fd7b03);
+  --slide-04: linear-gradient(#9a0101, #fd7b03);
+
+  /* --- Type ------------------------------------------------------------- */
+  --font-family: "SF Pro Display", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+  --regular: 400;
+  --medium: 500;
+
+  --h1: 5.5rem;
+  --h2: 7.5rem;
+  --h2-5: 4rem;
+  --h3: 3.25rem;
+  --h4: 2.25rem;
+
+  --body-1: 1.125rem;
+  --body-2: 0.875rem;
+  --body-3: 1.25rem;
+
+  --title-1: 1rem;
+  --title-2: 0.875rem;
+  --title-3: 1.5rem;
+
+  --tag: 1.125rem;
+  --tag-small: 1.125rem;
+  --btn: 1.0625rem;
+  --small-text-1: 0.75rem;
+  --small-text-2: 0.625rem;
+
+  /* --- Layout ----------------------------------------------------------- */
+  --gutter: 2rem;
+  --radius-sm: 0.5rem;
+  --radius-md: 1.5rem;
+  --radius-lg: 2.5rem;
+  --radius-pill: 99rem;
+
+  /* --- Motion ----------------------------------------------------------- */
+  --duration-fast: 0.2s;
+  --duration-normal: 0.4s;
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+
+  /* Set by js/zoom.js, consumed by html { font-size } in base.css */
+  --user-zoom: 1;
+}
+
+/* --- Dark theme ------------------------------------------------------- */
+[data-theme="dark"] {
+  --mainbg: #020108;
+  --mainbg-gradient: #02010800;
+  --secondbg: #111111;
+
+  --fonts-100: #ffffff;
+  --fonts-64: #ffffffa3;
+  --fonts-50: #ffffff80;
+  --fonts-30: #ffffff4d;
+  --fonts-20: #ffffff33;
+
+  --lines: #2a2a30;
+  --menu: #020108;
+  --dots-pattern: #1a1a1a;
+}
+
+/* --- Tablet ------------------------------------------------------------ */
+@media (max-width: 991px) {
+  :root {
+    --h1: 4.5rem;
+    --h2: 5.5rem;
+    --h2-5: 3rem;
+    --h3: 2.5rem;
+    --h4: 2rem;
+    --gutter: 1.5rem;
+  }
+}
+
+/* --- Mobile ------------------------------------------------------------ */
+@media (max-width: 767px) {
+  :root {
+    --h1: 2.5rem;
+    --h2: 2.25rem;
+    --h2-5: 2.25rem;
+    --h3: 1.5rem;
+    --h4: 2rem;
+
+    --body-1: 1rem;
+    --body-2: 1rem;
+    --body-3: 1rem;
+
+    --tag: 1rem;
+    --title-3: 1rem;
+
+    --gutter: 1rem;
+  }
+}

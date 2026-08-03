@@ -1,0 +1,203 @@
+/* ==========================================================================
+   Footer card + interactive dots field
+   The card is a near-full-viewport panel; the dots field is deliberately wider
+   than the viewport and clipped, so the pattern runs off both edges.
+   ========================================================================== */
+
+.footer {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch;
+  margin-top: 10rem;
+  padding: 0.5rem;
+  overflow: hidden;
+}
+
+.footer__wrap {
+  display: flex;
+  flex-flow: column;
+  gap: 2rem;
+  width: 100%;
+  height: calc(100svh - 1rem);
+  max-height: 60rem;
+  padding: 2rem;
+  background-color: var(--secondbg);
+  border-radius: 3rem;
+  overflow: hidden;
+}
+
+.footer__main {
+  position: relative;
+  flex: 1;
+  display: flex;
+  flex-flow: row;
+  justify-content: space-between;
+  align-items: flex-start;
+  min-height: 0;
+}
+
+.footer__logo {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  color: var(--fonts-100);
+  transition: opacity var(--duration-fast) ease;
+}
+
+.footer__logo:hover {
+  opacity: 0.7;
+}
+
+.footer__logo-in {
+  display: block;
+  flex: none;
+  width: 3.25rem;
+  height: 3.25rem;
+}
+
+.footer__logo-in svg {
+  width: 100%;
+  height: 100%;
+}
+
+.footer__logo-txt {
+  font-size: 3.25rem;
+  line-height: 1;
+  letter-spacing: -0.035em;
+}
+
+.footer__main__wrap {
+  flex: none;
+  display: flex;
+  flex-flow: column;
+  justify-content: flex-start;
+  min-width: 28rem;
+}
+
+.footer__main__top {
+  display: flex;
+  gap: 3.5rem;
+}
+
+.footer__main__left,
+.footer__main__right {
+  flex: 1;
+  display: flex;
+  flex-flow: column;
+  gap: 3.5rem;
+}
+
+.footer__main__list {
+  display: flex;
+  flex-flow: column;
+  gap: 0.35rem;
+}
+
+.footer__main__link,
+.footer__main__link-small {
+  transition: opacity var(--duration-fast) ease;
+}
+
+.footer__main__link:hover,
+.footer__main__link-small:hover {
+  opacity: 0.64;
+}
+
+.footer__main__bottom {
+  flex: none;
+  display: flex;
+  justify-content: space-between;
+  gap: 2rem;
+  width: 100%;
+}
+
+/* --- Dots field ----------------------------------------------------------
+   Deliberately wider than the card and clipped by it, so the pattern runs off
+   both edges rather than ending in a visible column.
+   ------------------------------------------------------------------------- */
+
+.dots-field {
+  flex: none;
+  align-self: center;
+  display: grid;
+  gap: 16px;
+  width: 103rem;
+  height: 29rem;
+  align-content: end;
+  justify-content: center;
+  margin-bottom: -2rem;
+  pointer-events: none;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: var(--dots-pattern);
+  will-change: transform, opacity, background-color;
+}
+
+.dot.is-on {
+  background-color: var(--fonts-100);
+}
+
+@media (max-width: 991px) {
+  .footer {
+    margin-top: 5rem;
+  }
+
+  .footer__wrap {
+    gap: 1.5rem;
+    max-height: 72rem;
+    padding: 1rem;
+    border-radius: 2rem;
+  }
+
+  .footer__main {
+    flex-flow: column;
+    gap: 2.5rem;
+  }
+
+  .footer__main__wrap {
+    min-width: 0;
+    width: 100%;
+    gap: 4rem;
+  }
+
+  .footer__logo-txt {
+    font-size: 2.5rem;
+  }
+
+  .footer__logo-in {
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+
+  .dots-field {
+    width: 21.5rem;
+    height: 14.5rem;
+    gap: 10px;
+  }
+
+  .dot {
+    width: 6px;
+    height: 6px;
+  }
+}
+
+@media (max-width: 767px) {
+  .footer__main__top {
+    gap: 2rem;
+  }
+
+  .footer__main__left,
+  .footer__main__right {
+    gap: 2rem;
+  }
+
+  .footer__main__bottom {
+    flex-flow: column;
+    gap: 0.5rem;
+  }
+}

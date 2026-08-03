@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="256" height="384" viewBox="0 0 256 384" role="img" aria-label="hero-load-04 placeholder">
+  <defs>
+    <pattern id="p48488" width="24" height="24" patternUnits="userSpaceOnUse">
+      <rect width="24" height="24" fill="#ececea"/>
+      <circle cx="12" cy="12" r="1.4" fill="#d7d7d4"/>
+    </pattern>
+  </defs>
+  <rect width="256" height="384" fill="url(#p48488)"/>
+  <rect x="0.5" y="0.5" width="255" height="383" fill="none" stroke="#cfcfcb"/>
+  <g fill="#8a8a84" font-family="-apple-system, Helvetica, Arial, sans-serif" text-anchor="middle">
+    <text x="128" y="192" font-size="21" letter-spacing="0.5">hero-load-04</text>
+    <text x="128" y="219" font-size="16" opacity="0.55">256 x 384</text>
+  </g>
+</svg>

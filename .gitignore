@@ -1,0 +1,29 @@
+# macOS
+.DS_Store
+._*
+.Spotlight-V100
+.Trashes
+
+# Editors
+.vscode/
+.idea/
+*.swp
+
+# Env — never commit real secrets
+.env
+.env.*
+!.env.example
+
+# Node (in case tooling is added later)
+node_modules/
+npm-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Build output
+dist/
+build/
+.cache/
+
+# Local reference material (site extraction, not ours to redistribute)
+reference/

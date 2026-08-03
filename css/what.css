@@ -1,0 +1,56 @@
+/* ==========================================================================
+   "What you can do" — small label left, oversized statement right
+   ========================================================================== */
+
+.what {
+  display: flex;
+  width: 100%;
+  border-top: 1px solid var(--lines);
+}
+
+.what__left {
+  flex: none;
+  width: 28.5rem;
+  height: 26rem;
+  padding: 2rem;
+  border-right: 1px solid var(--lines);
+}
+
+.what__right {
+  flex: 1;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  height: 100%;
+  padding: 2rem;
+}
+
+@media (max-width: 991px) {
+  .what {
+    flex-flow: column;
+  }
+
+  .what__left {
+    width: 100%;
+    height: auto;
+    padding-bottom: 1rem;
+    border-right-width: 0;
+  }
+
+  .what__right {
+    padding-top: 0;
+    padding-bottom: 6rem;
+  }
+}
+
+@media (max-width: 767px) {
+  .what__left {
+    padding-bottom: 0.75rem;
+    padding-inline: 1rem;
+  }
+
+  .what__right {
+    padding-bottom: 3rem;
+    padding-inline: 1rem;
+  }
+}

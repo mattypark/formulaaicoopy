@@ -1,0 +1,285 @@
+/* ==========================================================================
+   Reset + utility classes
+   The u-* classes mirror the original's naming so section CSS maps 1:1.
+   ========================================================================== */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: calc(16px * var(--user-zoom));
+  -webkit-text-size-adjust: 100%;
+  scroll-behavior: auto;
+}
+
+body {
+  background-color: var(--mainbg);
+  color: var(--fonts-100);
+  font-family: var(--font-family);
+  font-weight: var(--regular);
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+  transition: background-color var(--duration-fast) ease, color var(--duration-fast) ease;
+}
+
+/* Preloader owns the first paint — hide the page beneath it until done. */
+html.is-loading body {
+  overflow: hidden;
+}
+
+img,
+svg,
+video {
+  display: block;
+  max-width: 100%;
+}
+
+img {
+  height: auto;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: var(--regular);
+  font-size: inherit;
+  line-height: inherit;
+}
+
+::selection {
+  background-color: var(--accent);
+  color: #fff;
+}
+
+/* --- Type utilities ---------------------------------------------------- */
+
+.u-h1 {
+  font-size: var(--h1);
+  line-height: 1.02;
+  letter-spacing: -0.03em;
+}
+
+.u-h2 {
+  font-size: var(--h2);
+  line-height: 0.98;
+  letter-spacing: -0.035em;
+}
+
+.u-h2-5 {
+  font-size: var(--h2-5);
+  line-height: 1.02;
+  letter-spacing: -0.03em;
+}
+
+.u-h3 {
+  font-size: var(--h3);
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+}
+
+.u-h4 {
+  font-size: var(--h4);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+.u-body-1 {
+  font-size: var(--body-1);
+  line-height: 1.4;
+}
+
+.u-body-2 {
+  font-size: var(--body-2);
+  line-height: 1.45;
+}
+
+.u-body-3 {
+  font-size: var(--body-3);
+  line-height: 1.35;
+}
+
+.u-title-1 {
+  font-size: var(--title-1);
+  line-height: 1.3;
+}
+
+.u-title-2 {
+  font-size: var(--title-2);
+  line-height: 1.35;
+}
+
+.u-title-3 {
+  font-size: var(--title-3);
+  line-height: 1.25;
+}
+
+.u-tag {
+  font-size: var(--tag);
+  line-height: 1.3;
+}
+
+.u-btn {
+  font-size: var(--btn);
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+}
+
+.u-small-text-1 {
+  font-size: var(--small-text-1);
+  line-height: 1.3;
+  letter-spacing: 0.02em;
+}
+
+.u-small-text-2 {
+  font-size: var(--small-text-2);
+  line-height: 1.3;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+/* --- Colour utilities -------------------------------------------------- */
+
+.u-fonts-100 { color: var(--fonts-100); }
+.u-fonts-64  { color: var(--fonts-64); }
+.u-fonts-50  { color: var(--fonts-50); }
+.u-fonts-30  { color: var(--fonts-30); }
+.u-fonts-20  { color: var(--fonts-20); }
+
+/* Used on the gradient slides where ink is always white */
+.u-fonts-50-stb { color: #ffffff80; }
+
+.u-indent { text-indent: 1.5rem; }
+
+/* --- Buttons ----------------------------------------------------------- */
+
+.btn-primary {
+  background-color: var(--fonts-100);
+  color: var(--mainbg);
+  border-radius: var(--radius-pill);
+  height: 3rem;
+  padding: 0.875rem 1.5rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity var(--duration-fast) ease, transform var(--duration-fast) ease;
+  white-space: nowrap;
+}
+
+.btn-primary:hover {
+  opacity: 0.82;
+}
+
+.btn-primary:active {
+  transform: scale(0.97);
+}
+
+/* White pill used on the coloured slides */
+.btn-primary-stb {
+  background-color: #fff;
+  color: #020108;
+  border-radius: var(--radius-pill);
+  padding: 0.85rem 1.75rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity var(--duration-fast) ease, transform var(--duration-fast) ease;
+  white-space: nowrap;
+}
+
+.btn-primary-stb:hover {
+  opacity: 0.85;
+}
+
+.btn-primary-stb:active {
+  transform: scale(0.97);
+}
+
+.btn-outline {
+  border: 1px solid var(--fonts-20);
+  color: var(--fonts-100);
+  border-radius: var(--radius-pill);
+  padding: 0.85rem 1.5rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: border-color var(--duration-fast) ease;
+}
+
+.btn-outline:hover {
+  border-color: var(--fonts-64);
+}
+
+/* --- Helpers ----------------------------------------------------------- */
+
+.is-absolute { position: absolute; }
+.u-hidden-copy { display: none; }
+
+/* Word spans produced by the hero/flash splitters */
+.hero-flash-word,
+.flash-word {
+  display: inline-block;
+  will-change: opacity, color;
+}
+
+/* --- Shared keyframes -------------------------------------------------- */
+
+@keyframes marquee {
+  0%   { transform: translateX(0%); }
+  100% { transform: translateX(-100%); }
+}
+
+@keyframes columnanima {
+  0%   { transform: translateY(0%); }
+  100% { transform: translateY(-100%); }
+}
+
+@keyframes hero-row {
+  0%   { transform: translate(var(--tx, 0%), var(--ty, 0%)); }
+  100% { transform: translate(var(--tx-end, 0%), var(--ty-end, -100%)); }
+}
+
+@keyframes spinStep {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero__slider__row,
+  .how__bottom-row,
+  .how__column,
+  .preloader__loader {
+    animation: none !important;
+  }
+}

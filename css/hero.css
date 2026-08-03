@@ -1,0 +1,376 @@
+/* ==========================================================================
+   Hero — title bottom-left, rotating ring centre, tag slider right
+   ========================================================================== */
+
+.hero {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  width: 100%;
+  height: 100svh;
+  min-height: 56rem;
+  padding: 2rem 2rem 4rem;
+  overflow: hidden;
+}
+
+.hero__wrap {
+  z-index: 2;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  width: 100%;
+}
+
+.hero__left {
+  flex: 1;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-end;
+  margin-bottom: -0.25rem;
+}
+
+.hero__right {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+}
+
+.hero__title {
+  width: 70%;
+}
+
+.hero__scroll {
+  transition: opacity var(--duration-fast) ease;
+}
+
+.hero__scroll:hover {
+  opacity: 0.6;
+}
+
+.hero__copy {
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+}
+
+/* --- Rotating photo ring ------------------------------------------------ */
+
+.hero__carousel__wrap {
+  z-index: 3;
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+  pointer-events: none;
+}
+
+.hero__carousel__in {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 42.5rem;
+  height: 42.5rem;
+}
+
+.hero__carousel__item {
+  position: relative;
+  top: -14svw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 7.8rem;
+  height: 9.2rem;
+  background-color: var(--lines);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  transform: rotate(0);
+}
+
+.hero__carousel__0deg   { position: absolute; }
+.hero__carousel__45deg  { position: absolute; transform: rotate(45deg); }
+.hero__carousel__90deg  { position: absolute; transform: rotate(90deg); }
+.hero__carousel__135deg { position: absolute; transform: rotate(135deg); }
+.hero__carousel__180deg { position: absolute; transform: rotate(180deg); }
+.hero__carousel__225deg { position: absolute; transform: rotate(225deg); }
+.hero__carousel__270deg { position: absolute; transform: rotate(270deg); }
+.hero__carousel__315deg { position: absolute; transform: rotate(315deg); }
+
+.hero__carousel__img {
+  flex: none;
+  width: 10rem;
+  max-width: none;
+  height: 10rem;
+  object-fit: cover;
+}
+
+/* Counter-rotate so photos stay upright inside a rotated slot */
+.hero__carousel__img.is-45deg  { transform: rotate(-45deg); }
+.hero__carousel__img.is-90deg  { transform: rotate(-90deg); }
+.hero__carousel__img.is-135deg { transform: rotate(-135deg); }
+.hero__carousel__img.is-180deg { transform: rotate(-180deg); }
+
+/* --- Centre dropzone ---------------------------------------------------- */
+
+.hero__upload {
+  z-index: 3;
+  position: absolute;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hero__upload-embed {
+  z-index: 9;
+  position: absolute;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.upload-container {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  gap: 0.85rem;
+}
+
+.drop-zone {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 6.5rem;
+  height: 6.5rem;
+  background-color: var(--mainbg);
+  border: 1px solid var(--fonts-20);
+  border-radius: 1.25rem;
+  cursor: pointer;
+  transition: border-color var(--duration-fast) ease, transform var(--duration-fast) ease;
+}
+
+.drop-zone:hover {
+  border-color: var(--fonts-50);
+}
+
+.drop-zone.is-dragging {
+  border-color: var(--accent);
+  transform: scale(1.04);
+}
+
+.drop-zone-item {
+  width: 1.75rem;
+  height: 1.75rem;
+  color: var(--fonts-50);
+}
+
+.drop-zone-item svg {
+  width: 100%;
+  height: 100%;
+}
+
+.drop-zone-txt {
+  font-size: var(--title-2);
+  color: var(--fonts-64);
+}
+
+.error {
+  font-size: var(--small-text-1);
+  color: var(--accent);
+  min-height: 1rem;
+}
+
+/* --- Tag slider --------------------------------------------------------- */
+
+.hero__slider {
+  position: absolute;
+  top: 10rem;
+  bottom: 10rem;
+  right: 2rem;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.hero__slider__wrap {
+  position: relative;
+  display: flex;
+  flex-flow: column;
+  justify-content: flex-start;
+  align-items: flex-end;
+  height: 17rem;
+  overflow: hidden;
+}
+
+.hero__slider__row {
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: flex-end;
+  gap: 0.5rem;
+  padding-bottom: 0.5rem;
+  animation: hero-row 24s linear infinite;
+  --tx: 0%;
+  --ty: 0%;
+  --tx-end: 0%;
+  --ty-end: -100%;
+}
+
+.hero__slider__item {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 0.35rem 1rem 0.4rem;
+  background-color: var(--mainbg);
+  border: 1px solid var(--fonts-20);
+  border-radius: var(--radius-sm);
+  white-space: nowrap;
+}
+
+.hero__slider__item-txt {
+  font-size: var(--title-1);
+}
+
+.hero__slider__top-gr,
+.hero__slider__bottom-gr {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 7rem;
+  pointer-events: none;
+}
+
+.hero__slider__top-gr {
+  top: 0;
+  background-image: linear-gradient(180deg, var(--mainbg), var(--mainbg-gradient));
+}
+
+.hero__slider__bottom-gr {
+  bottom: 0;
+  background-image: linear-gradient(180deg, var(--mainbg-gradient), var(--mainbg));
+}
+
+/* --- Tablet ------------------------------------------------------------- */
+
+@media (max-width: 991px) {
+  .hero {
+    min-height: 44rem;
+    padding: 2rem 1.5rem 3rem;
+  }
+
+  .hero__title {
+    width: 100%;
+  }
+
+  .hero__carousel__in {
+    width: 32rem;
+    height: 32rem;
+  }
+
+  .hero__carousel__item {
+    width: 6rem;
+    height: 7rem;
+    border-radius: 1.75rem;
+  }
+
+  .hero__carousel__img {
+    width: 7.5rem;
+    height: 7.5rem;
+  }
+
+  .hero__slider {
+    right: 1.5rem;
+  }
+}
+
+/* --- Mobile ------------------------------------------------------------- */
+
+@media (max-width: 767px) {
+  .hero {
+    min-height: 38rem;
+    padding: 1rem 1rem 2.5rem;
+  }
+
+  .hero__wrap {
+    flex-flow: column;
+    align-items: flex-start;
+    gap: 1.5rem;
+  }
+
+  .hero__right {
+    justify-content: flex-start;
+  }
+
+  .hero__carousel__in {
+    width: 22rem;
+    height: 22rem;
+  }
+
+  .hero__carousel__item {
+    width: 4.4rem;
+    height: 5.2rem;
+    border-radius: 1.25rem;
+    top: -22svw;
+  }
+
+  .hero__carousel__img {
+    width: 5.6rem;
+    height: 5.6rem;
+  }
+
+  /* Slider flips to a horizontal marquee across the top */
+  .hero__slider {
+    top: 6.5rem;
+    bottom: auto;
+    left: 0;
+    right: 0;
+    justify-content: flex-start;
+  }
+
+  .hero__slider__wrap {
+    flex-flow: row;
+    align-items: center;
+    width: 100%;
+    height: auto;
+  }
+
+  .hero__slider__row {
+    flex-flow: row;
+    align-items: center;
+    padding-bottom: 0;
+    padding-right: 0.5rem;
+    --tx-end: -100%;
+    --ty-end: 0%;
+  }
+
+  .hero__slider__top-gr,
+  .hero__slider__bottom-gr {
+    top: 0;
+    bottom: 0;
+    height: auto;
+    width: 3rem;
+  }
+
+  .hero__slider__top-gr {
+    left: 0;
+    right: auto;
+    background-image: linear-gradient(90deg, var(--mainbg), var(--mainbg-gradient));
+  }
+
+  .hero__slider__bottom-gr {
+    right: 0;
+    left: auto;
+    background-image: linear-gradient(-90deg, var(--mainbg), var(--mainbg-gradient));
+  }
+
+  .drop-zone {
+    width: 5rem;
+    height: 5rem;
+  }
+}

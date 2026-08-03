@@ -1,0 +1,343 @@
+/* ==========================================================================
+   Header pill + menu overlay
+   ========================================================================== */
+
+.header {
+  z-index: 999;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem 2rem;
+  will-change: transform;
+  transition: all var(--duration-fast) ease;
+}
+
+.header.is-hidden,
+.menu.is-hidden {
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-0.75rem);
+}
+
+.menu {
+  transition: opacity var(--duration-fast) ease, transform var(--duration-fast) ease;
+}
+
+.header__left {
+  width: 10.75rem;
+}
+
+.header__logo {
+  display: block;
+  width: 3.65rem;
+  height: 3.5rem;
+  color: var(--fonts-100);
+  transition: opacity var(--duration-fast) ease;
+}
+
+.header__logo:hover {
+  opacity: 0.64;
+}
+
+.header__logo svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* --- Centre pill -------------------------------------------------------- */
+
+.header__main {
+  z-index: 2;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem;
+  height: 3rem;
+  padding: 0.5rem;
+  background-color: var(--menu);
+  border-radius: var(--radius-pill);
+}
+
+.header__menu {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.5rem 0 0.5rem 0.5rem;
+  cursor: pointer;
+  transition: opacity var(--duration-fast) ease;
+}
+
+.header__menu:hover {
+  opacity: 0.64;
+}
+
+.header__menu-icon {
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+  width: 1.65rem;
+  height: 1.65rem;
+  color: #fff;
+}
+
+.header__menu-line {
+  width: 1.65rem;
+  height: 0.0625rem;
+  background-color: #fff;
+}
+
+.header__menu-line.is-top    { transform: translate(0, -0.2rem); }
+.header__menu-line.is-bottom { transform: translate(0,  0.2rem); }
+
+.header__menu-txt {
+  width: 3rem;
+  flex: none;
+  color: #fff;
+}
+
+.header__theme {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 2rem;
+  height: 2rem;
+  border: 1px solid var(--menu-colors);
+  border-radius: var(--radius-pill);
+  cursor: pointer;
+  transition: all var(--duration-fast) ease;
+}
+
+.header__theme:hover {
+  border-color: #ffffffa6;
+}
+
+.header__theme-day,
+.header__theme-night {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+}
+
+.header__theme-day   { width: 1.25rem; height: 1.25rem; }
+.header__theme-night { width: 1rem;    height: 1rem; display: none; }
+
+[data-theme="dark"] .header__theme-day   { display: none; }
+[data-theme="dark"] .header__theme-night { display: flex; }
+
+.header__theme svg {
+  width: 100%;
+  height: 100%;
+}
+
+.header__prc {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 2rem;
+  padding: 0 0.55rem;
+  background-color: var(--menu-colors);
+  border-radius: var(--radius-pill);
+}
+
+.header__prc-txt {
+  width: 2.5rem;
+  text-align: center;
+  color: #fff;
+  font-variant-numeric: tabular-nums;
+}
+
+/* --- Right cluster ------------------------------------------------------ */
+
+.header_right {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.65rem;
+}
+
+.header_signin {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 2rem;
+  height: 2rem;
+  border: 1px solid var(--menu-colors);
+  border-radius: 2rem;
+  color: var(--fonts-100);
+  transition: all var(--duration-fast) ease;
+}
+
+.header_signin:hover {
+  border-color: var(--fonts-64);
+}
+
+.header_signin.is-header-btn {
+  border-color: var(--fonts-20);
+}
+
+.header_signin.is-header-btn:hover {
+  border-color: var(--fonts-64);
+}
+
+.header_signin-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 1rem;
+  height: 1rem;
+}
+
+.header_signin-icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* ==========================================================================
+   Menu overlay — grows out of the header pill
+   ========================================================================== */
+
+.menu {
+  z-index: 998;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  pointer-events: none;
+  padding-top: 1.5rem;
+}
+
+.menu__wrap-main {
+  pointer-events: auto;
+}
+
+.menu__wrap {
+  background-color: var(--dots-pattern);
+  border-radius: 2rem;
+  overflow: hidden;
+  display: flex;
+  flex-flow: column;
+  gap: 3rem;
+  width: 18rem;
+  height: 39rem;
+  padding: 6.25rem 1.25rem 2.5rem;
+  pointer-events: auto;
+}
+
+.menu__item {
+  display: flex;
+  flex-flow: column;
+  gap: 0.65rem;
+  width: 100%;
+}
+
+.menu__item.is-lined {
+  border-top: 1px solid var(--fonts-20);
+  padding-top: 1.5rem;
+}
+
+.menu__label {
+  color: var(--fonts-50);
+}
+
+.menu__list {
+  display: flex;
+  flex-flow: column;
+  gap: 0.2rem;
+}
+
+.menu__list.is-row {
+  flex-flow: row;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.menu__link {
+  color: var(--fonts-100);
+  transition: opacity var(--duration-fast) ease;
+}
+
+.menu__link:hover {
+  opacity: 0.64;
+}
+
+.menu__link.u-fonts-50 {
+  color: var(--fonts-50);
+}
+
+.menu__item.is-last {
+  flex-flow: row;
+  align-items: center;
+  gap: 0.65rem;
+  padding-top: 3rem;
+  margin-top: auto;
+}
+
+/* Desktop keeps the CTA in the header; the menu copy only appears on small screens */
+.btn-primary.is-menu {
+  display: none;
+}
+
+.header_signin.is-auth {
+  flex: none;
+  width: 3rem;
+  height: 3rem;
+  color: var(--fonts-100);
+  border-color: var(--fonts-20);
+}
+
+@media (max-width: 991px) {
+  .header {
+    align-items: flex-start;
+    padding: 1.2rem 1rem;
+  }
+
+  .header__left {
+    width: 4rem;
+  }
+
+  .header_right {
+    display: none;
+  }
+
+  .menu {
+    padding-top: 1.2rem;
+  }
+
+  .menu__wrap {
+    gap: 2rem;
+    width: 16.2rem;
+    padding: 5rem 1rem 1rem;
+  }
+
+  .menu__item {
+    padding-bottom: 1rem;
+  }
+
+  .menu__item.is-lined {
+    padding-bottom: 0;
+  }
+
+  .menu__item.is-last {
+    padding-top: 2rem;
+    padding-bottom: 0;
+  }
+
+  .menu__list {
+    gap: 0;
+  }
+
+  .btn-primary.is-menu {
+    flex: 1;
+    display: flex;
+  }
+}
