@@ -1,8 +1,12 @@
 /* ==========================================================================
    Pinned gradient slides
-   Each slide is 100vh and gets pinned by ScrollTrigger, then tilts back in 3D
-   and fades as the next one arrives. `perspective` on the wrapper is what
-   makes the rotationX read as depth rather than a squash.
+   Each slide is 100vh and gets pinned by ScrollTrigger, then tips and fades as
+   the next one arrives.
+
+   Deliberately NO perspective and NO preserve-3d: the outgoing card is meant to
+   compress vertically (a flat rotateX squash) while rotateZ skews its edge, not
+   to swing back in true 3D. Transform origin stays centred — anchoring it to the
+   top makes the card shrink upward and opens a gap under it.
    ========================================================================== */
 
 .list {
@@ -35,7 +39,6 @@
 
 .list__main__wrap {
   position: relative;
-  perspective: 1200px;
   overflow: hidden;
 }
 
@@ -45,15 +48,17 @@
 
 .list__main__content__wrap {
   height: 100vh;
-  transform-style: preserve-3d;
 }
 
+/* overflow:hidden is load-bearing. The slide artwork is far wider and taller
+   than the viewport; without clipping here it grows the content past 100vh,
+   which corrupts the pin heights of every slide after it. */
 .list__main__content {
   display: flex;
   flex-flow: column;
   width: 100%;
   height: 100%;
-  transform-origin: 50% 0%;
+  overflow: hidden;
   will-change: transform, opacity;
 }
 
@@ -171,10 +176,12 @@
 .list__main__bottom {
   position: relative;
   flex: 1;
+  min-height: 0;
   width: 100%;
   display: flex;
   flex-flow: column;
   align-items: center;
+  overflow: hidden;
 }
 
 .list__main__bottom.is-first,
